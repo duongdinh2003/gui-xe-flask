@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Xe</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Quản Lý Xe</h1>
+
+      <form id="vehicleForm" action="/submit" method="POST">
+        <label for="licensePlate">Biển số xe:</label>
+        <input type="text" id="licensePlate" name="license_plate" required />
+
+        <label for="carCode">Mã số gửi xe:</label>
+        <input type="text" id="carCode" name="car_code" required />
+
+        <label for="time">Thời gian lấy xe:</label>
+        <input type="datetime-local" id="time" name="pickup_time" required />
+
+        <button type="submit">Lưu Thông Tin</button>
+      </form>
+
+      {% if message %}
+      <p>{{ message }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
