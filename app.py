@@ -1,11 +1,15 @@
 from flask import Flask, jsonify, request, render_template
 from models import db, CustomerData
 from datetime import datetime
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, instance_path=os.path.join('/tmp', 'instance'))
+
+# Tạo thư mục nếu chưa tồn tại
+os.makedirs(app.instance_path, exist_ok=True)
 
 # Cấu hình SQLite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///parking.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Khởi tạo SQLAlchemy
